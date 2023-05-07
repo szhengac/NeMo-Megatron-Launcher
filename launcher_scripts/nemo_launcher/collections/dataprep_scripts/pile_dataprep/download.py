@@ -26,13 +26,15 @@ def main(cfg):
     Arguments:
         cfg: main config file.
     """
+    hydra_cfg = hydra.core.hydra_config.HydraConfig.get()
     data_dir = cfg.get("data_dir")
     pile_url_train = cfg.get("the_pile_url")
     assert data_dir is not None, "data_dir must be a valid path."
 
     if cfg.get("cluster_type") == "bcm":
         file_number = int(os.environ.get("SLURM_ARRAY_TASK_ID"))
-        url = f"{pile_url_train}{file_number:02d}.jsonl.zst"
+        #url = f"{pile_url_train}{file_number:02d}.jsonl.zst"
+        url = f"{pile_url_train}"
         output_file = f"{file_number:02d}.jsonl.zst"
         downloaded_path = utils.download_single_file(url, data_dir, output_file)
     if cfg.get("cluster_type") == "bcp":
