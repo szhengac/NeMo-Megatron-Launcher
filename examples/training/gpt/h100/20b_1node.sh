@@ -18,6 +18,7 @@ training.model.global_batch_size=4 \
 training.model.tensor_model_parallel_size=8 \
 training.model.pipeline_model_parallel_size=1 \
 training.model.num_layers=48 \
+training.model.num_attention_heads=64 \
 training.model.transformer_engine=True \
 training.model.fp8=false \
 training.model.fp8_e4m3=false \
